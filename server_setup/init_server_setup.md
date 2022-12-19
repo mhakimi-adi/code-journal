@@ -17,8 +17,8 @@
     - [:slot\_machine: Auto Suggestions](#slot_machine-auto-suggestions)
   - [:dolphin: Docker Setup](#dolphin-docker-setup)
     - [:factory: Installation](#factory-installation)
-    - [:bar\_chart: Grafana Container](#bar_chart-grafana-container)
     - [:package: MySQL Container](#package-mysql-container)
+    - [:bar\_chart: Grafana Container](#bar_chart-grafana-container)
   - [:twisted\_rightwards\_arrows: DNS Configuration](#twisted_rightwards_arrows-dns-configuration)
   - [:arrows\_counterclockwise: Reverse Proxy](#arrows_counterclockwise-reverse-proxy)
 
@@ -251,6 +251,22 @@ pass init <generated_public_key>
 
 The `gpg --generate-key` step will open a prompt for you to create a password in the ubuntu desktop os ui. After this step is complete you will be able to click the sign-in button in the docker desktop application.
 
+
+### :package: MySQL Container
+
+MySQL docker container docs can be found [here](https://hub.docker.com/_/mysql)
+
+We'll use a volume mount to persit the data even if our mysql server or docker container goes down. The docs for that can be found [here](https://docs.docker.com/get-started/06_bind_mounts/)
+
+```bash
+docker pull mysql:latest
+docker run --name mysql -p 3306:3306 -v /path/to/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d --restart unless-stopped mysql:latest
+```
+
+Now we should be able to access our database at `<username>@<ip_address>:<port>`. Example with mysql workbench shown below:
+
+![mysql_wb](./assets/mysql_wb.png "mysql_wb")
+
 ### :bar_chart: Grafana Container
 
 The docker grafana docs can be found [here](https://hub.docker.com/r/grafana/grafana)
@@ -292,23 +308,6 @@ docker inspect mysql | grep "IPAddress"
 ![ip_addr](assets/ip_addr.png "ip_addr")
 
 ![grafana_conn](assets/grafana_conn.png "grafana_conn")
-
-### :package: MySQL Container
-
-MySQL docker container docs can be found [here](https://hub.docker.com/_/mysql)
-
-We'll use a volume mount to persit the data even if our mysql server or docker container goes down. The docs for that can be found [here](https://docs.docker.com/get-started/06_bind_mounts/)
-
-```bash
-docker pull mysql:latest
-docker run --name mysql -p 3306:3306 -v /path/to/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d --restart unless-stopped mysql:latest
-```
-
-Now we should be able to access our database at `<username>@<ip_address>:<port>`. Example with mysql workbench shown below:
-
-![mysql_wb](./assets/mysql_wb.png "mysql_wb")
-
-Select the `MySQL` data source and follow the instructions to setup the connections.
 
 ## :twisted_rightwards_arrows: DNS Configuration
 
