@@ -273,7 +273,7 @@ The docker grafana docs can be found [here](https://hub.docker.com/r/grafana/gra
 
 ```bash
 docker pull grafana/grafana
-docker run -d --name=grafana -p 3000:3000 -v /path/to/data:/var/lib/grafana --network=host --restart unless-stopped grafana/grafana
+docker run -d --name=grafana -p 3000:3000 -v /path/to/data:/var/lib/grafana --restart unless-stopped grafana/grafana
 ```
 
 You should now be able to access the grafana dashboard from `<ip_address>:3000`. The default credentials are `admin/admin`.
