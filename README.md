@@ -14,3 +14,5 @@ Initial Server Setup Covers: ([Instructions](server_setup/init_server_setup.md))
 - MySQL Server Setup (Containerized)
 - Grafana Server Setup (Containerized)
 - DNS Configuration Example
+
+Minecraft Server Setup (containerized): [Instructions](minecraft/minecraft.md)
