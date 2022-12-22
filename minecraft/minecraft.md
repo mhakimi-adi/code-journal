@@ -2,6 +2,8 @@
 
 The setup differs between different modpacks so you might have to make adjustments, but this will cover the general steps to get it running, and most importantly how to run it from docker containers. (If you want to use docker you will need to follow the server setup instructions [here](../server_setup/init_server_setup.md))
 
+Opensource setup: https://github.com/itzg/docker-minecraft-server
+
 **Table of Contents:**
 - [:video\_game: Minecraft Server Setup](#video_game-minecraft-server-setup)
   - [:stars: Download](#stars-download)
